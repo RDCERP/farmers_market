@@ -1,0 +1,32 @@
+<!-- PRODUCTS Template -->
+<!-- Products Page Title -->
+<section class="store-light-green-container">
+    <div class="container" id="store-dark-green-container">
+        <div class="row" id="stores-title-container">
+            <h2 id="stores-title">PRODUCTS</h2>
+        </div>
+    </div>
+</section>
+<!-- Individual Products -->
+<!-- TODO: Make this section responsive -->
+{{#if allProducts.length}}
+<section class="large-light-green-container">
+    <div class="container">
+        <div class="row justify-content-center my-products">
+            {{#each allProducts as |product|}}
+            <div class="col-6 col-sm-3 product-info">
+                <img class="description product-img" src="/images/black-square.jpeg" alt="">
+                <p class="description">Product Name: <br><span class="my-store-products">{{product.product_name}}</span></p>
+                <p class="description">Description: <br><span class="my-store-products">{{product.product_description}}</span></p>
+                <p class="description"><br><a class="store-link" href="/dashboard/store-products/{{product.store_id}}"><button class="my-store-products">{{product.store.store_name}}</button></a></p>
+                {{!-- //TODO: Currently, the category section isn't displaying because there aren't any categories tied to the product. Need to get the store's category instead --}}
+                {{#each product.categories as |category|}}
+                <p class="description">Categories: <br><span class="my-store-products">{{category.category_name}}</span></p>
+                {{/each}}
+                {{!-- <a class="description view-store-button" href="#"><button>View Procuct</button></a> --}}
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+{{/if}}

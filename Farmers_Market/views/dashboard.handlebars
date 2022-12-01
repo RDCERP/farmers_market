@@ -1,0 +1,72 @@
+<!-- DASHBOARD Title -->
+<section class="store-light-green-container">
+    <div id="store-dark-green-container">
+        <div id="stores-title-container">
+            <h2 id="stores-title">DASHBOARD</h2>
+        </div>
+    </div>
+</section>
+<!-- CREATE SECTION -->
+<section class="large-light-green-container">
+    <div class="container">
+        <p class="section-heading">CREATE</p>
+        <div class="row">
+            <div class="col create-btns-section">
+                <a class="description" href="dashboard/add-store"><button>Create New Store</button></a>
+                {{!-- <button class="description" id="create-store">Create New Store (in progress)</button> --}}
+                <a class="description" href="dashboard/add-product"><button>Create New Product</button></a>
+                {{!-- <button id="create-product">Create New Product (in progress)</button> --}}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- USER'S STORES SECTION -->
+{{#if stores.length}}
+<section class="large-light-green-container">
+    <div class="container">
+        <p class="section-heading">YOUR STORES</p>
+        <div class="row my-stores justify-content-center">
+            {{#each stores as |store|}}
+            <div class="col-6 store-info">
+                {{!-- // TODO: Render a user's Store Photo --}}
+                <img class="description store-img" src="/images/black-square.jpeg">
+                <p class="description">Store Name: <br><span class="my-store-products">{{store.store_name}}</span></p>
+                <p class="description">Points: <span class="my-store-products">{{store.rating_count}}</span></p>
+                <p class="description">Categories:
+                    {{#each store.categories as |category|}}
+                    <br><span class="my-store-products">{{category.category_name}}</span>
+                    {{/each}}
+                </p>
+                <a class="description" href="/dashboard/store-products/{{store.id}}"><button>View Store</button></a>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+{{/if}}
+
+
+{{!-- // TODO: Currently thhe product's section doesn't populate any products because the products object can't be found
+--}}
+<!-- USER'S PRODUCTS SECTION -->
+
+<section class="large-light-green-container">
+    <div class="container">
+        <p class="section-heading">YOUR PRODUCTS</p>
+        <div class="row justify-content-center my-products">
+            {{!-- // TODO: get the product object's properties -- product_name, store_name, categories --}}
+            {{#each stores as |store|}}
+            {{#each store.products as |product|}}
+            <div class="col-6 col-sm-3 product-info">
+                <img class="description product-img" src="/images/black-square.jpeg">
+                <p class="description">Product Name: <span class="my-store-products">{{product_name}}</span></p>
+                <p class="description">Store: <span>{{store.store_name}}</span></p>
+            </div>
+            {{/each}}
+            {{/each}}
+        </div>
+    </div>
+</section>
+
+

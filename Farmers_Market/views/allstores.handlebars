@@ -1,0 +1,42 @@
+<!-- STORES Template -->
+<!-- Stores Page Title -->
+<section class="store-light-green-container">
+    <div class="container" id="store-dark-green-container">
+        <div class="row" id="stores-title-container">
+            <h2 id="stores-title">STORES</h2>
+        </div>
+    </div>
+</section>
+
+<!-- Individual Stores -->
+{{!-- //TODO: Currently, only three stores populate in handlebars. What's going on with the other three stores? --}}
+{{#if stores.length}}
+<section class="large-light-green-container">
+    <div class="container">
+        <div class="row my-stores justify-content-center">
+            {{#each stores as |store|}}
+            <div class="col-6 store-info">
+                <img class="description store-img" src="/images/black-square.jpeg" alt="">
+                <p class="description">Store Name: <br><span class="my-store-products">{{store.store_name}}</span></p>
+                <p class="description">Points: <span class="my-store-products">{{store.rating_count}}</span></p>
+                <p class="description">Categories: 
+                {{#each store.categories as |category|}}
+                <br><span class="my-store-products">{{category.category_name}}</span>
+                {{/each}}
+                </p>
+
+                {{!-- //TODO: Why doesn't the upvote button center like the other store-info items? --}}
+                {{!-- //TODO: Get button to show only for users who are logged in --}}
+                <div>
+                    <button class="description upvote-btn" type="button" store_id="{{store.id}}">Upvote</button>
+                    <a class="store-link" href="/dashboard/store-products/{{store.id}}"><button>View Store</button></a>
+                </div>
+                
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+{{/if}}
+
+<script src="/javascript/upvote.js"></script>
