@@ -17,7 +17,7 @@
     This application need node.js, please refer to offical website for installation
 Download this repo by running
 ##
-    git clone https://github.com/#UserName/farmers_market.git
+    git clone https://github.com/rdcerp/farmers_market.git
 This application also needs you to install mysql on your computer. 
 ##
     Please refer to mysql website for installation
